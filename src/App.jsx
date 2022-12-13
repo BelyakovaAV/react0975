@@ -1,9 +1,7 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Profile from './components/Profile';
 
-const Profile = ()=> {
-  return <h2>Страница профиля</h2>;
-};
 const Messages = ()=> {
   return <h2>Страница с сообщениями</h2>;
 };
@@ -14,7 +12,7 @@ const Friends = ()=> {
   return <h2>Мои друзья</h2>;
 };
 
-
+ 
 function App() {
   return (
 <div className="container-fluid mt-5">
@@ -27,7 +25,7 @@ function App() {
         <NavLink className="nav-link" to="friends" >Мои друзья</NavLink>
       </div>
     </div>
-  </div>
+
   <div className="col-sm-9">
     <Routes>
       <Route path="/profile" element={<Profile />}/>
@@ -36,6 +34,7 @@ function App() {
       <Route path="/friends" element={<Friends />}/>
     </Routes>
   </div>
+</div>
 </div>
   );
 }
