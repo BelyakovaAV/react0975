@@ -5,5 +5,9 @@ color: brown;
   font-style: italic;
   color: blue;
   font-size: 1.2rem;
-
+}
+.email {
+  font-size: 1.2;
+  font-weight: 700;
+  color: brown;
 }
