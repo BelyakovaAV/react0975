@@ -16,9 +16,10 @@ const TableRow = (props) =>{
 
 
 class Friends extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {userRow: []};
+    this.state = { userRow : []};
   }
 
   componentDidMount() {
@@ -28,8 +29,9 @@ class Friends extends React.Component {
       let userRow = [];
     
       for(let i = 0; i < usersCount; i++) {
-        userRow.push(<TableRow id={users[i].id} key={i} index={i} name={users[i].name} lastname={users[i].lastname}/>)
+        userRow.push(<TableRow id={users[i].id} key={i} index={i} name={users[i].name} lastname={users[i].lastname}/>);
       }
+      this.setState({userRow: userRow});
     });
   }
 
@@ -42,7 +44,7 @@ class Friends extends React.Component {
             <th scope="col">Фамилия и Имя</th>
           </tr>
         </thead>
-          <tbody></tbody>
+          <tbody>{this.state.userRow}</tbody>
       </table>
     );
   }
