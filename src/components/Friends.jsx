@@ -1,3 +1,4 @@
+import React from "react";
 import {Link} from "react-router-dom";
 
 const TableRow = (props) =>{
@@ -14,30 +15,38 @@ const TableRow = (props) =>{
 };
 
 
-const Friends = (props)=> {
-  let users = props.function ();
-  let usersCount = Object.keys(users).length;
-  // метод object.keys позволяет дотянуться до колличества его ключей, т.к. в массиве мы на прямую свойство length не можем получить, поэтому в начале тянемся до кол.ва ключей а потом до длины, таким образом сохранив в переменной длину нашего объекта, после смогли его перебрать
-  let userRow = [];
-
-  for(let i = 0; i < usersCount; i++) {
-    userRow.push(<TableRow id={users[i].id} key={i} index={i} name={users[i].name} lastname={users[i].lastname}/>)
+class Friends extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {userRow: []};
   }
 
-  return (
-  <table className="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Фамилия и Имя</th>
+  componentDidMount() {
+    this.props.function ().then((users)=>{
+      console.log(users);
+      let usersCount = users.length;
+      let userRow = [];
+    
+      for(let i = 0; i < usersCount; i++) {
+        userRow.push(<TableRow id={users[i].id} key={i} index={i} name={users[i].name} lastname={users[i].lastname}/>)
+      }
+    });
+  }
 
-    </tr>
-  </thead>
-  <tbody>
-    {userRow}
-  </tbody>
-  </table>
-)
-};
+  render() {
+    return (
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Фамилия и Имя</th>
+          </tr>
+        </thead>
+          <tbody></tbody>
+      </table>
+    );
+  }
+
+}
 
 export default Friends;
