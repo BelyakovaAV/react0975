@@ -15,6 +15,7 @@ function App(props) {
         <NavLink className="nav-link" to="messages" >Сообщения</NavLink>
         <NavLink className="nav-link" to="settings" >Настройки</NavLink>
         <NavLink className="nav-link" to="friends" >Мои друзья</NavLink>
+        <NavLink className="nav-link" to="shop" >Магазин</NavLink>
       </div>
     </div>
 
@@ -24,6 +25,7 @@ function App(props) {
       <Route path="/messages" element={<Messages />}/>
       <Route path="/settings" element={<Settings />}/>
       <Route path="/friends" element={<Friends function={props.function.key_getUsers}/>}/>
+      <Route path="/shop" element={<Shop />}/>
     </Routes>
   </div>
 </div>
